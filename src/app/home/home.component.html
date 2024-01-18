@@ -1,0 +1,46 @@
+<div *ngIf="show">
+    <h1>Books Details</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let book of bookService.getBooks()">
+            <td>{{book.Id}}</td>
+            <td>{{book.Name | titlecase}}</td>
+            <td><a (click)="viewbook(book.Id)">View Details</a></td>
+        </tr> 
+        </tbody>
+    </table>
+</div>
+<div *ngIf="!show">
+    <form class="view-book-form">
+        <br>
+        <h1>View Book</h1>
+        <div class="bookform">
+            <label >Book ID</label>
+            <input name="Id" id="Id" [(ngModel)]="book.Id" disabled/>
+        </div>
+        <div class="bookform">
+            <label >Book Name</label>
+            <input  name="Name" id="Name" [(ngModel)]="book.Name" disabled/>
+        </div>
+        <div class="bookform">
+            <label for="Author">Author Name</label>
+            <input name="Author" id="Author" [(ngModel)]="book.Author" disabled/>
+        </div>
+        <div class="bookform">
+            <label for="Edition">Edition</label>
+            <input name="Edition" id="Edition" [(ngModel)]="book.Edition" disabled/>
+        </div>
+        <div class="bookform">
+            <label for="Publisher">Publisher</label>
+            <input name="Publisher" id="Publisher" [(ngModel)]="book.Publisher" disabled/>
+        </div>
+        <div class="bookform">
+            <button (click)="back()" type="submit">Back</button>
+        </div>
+    </form>
+</div>

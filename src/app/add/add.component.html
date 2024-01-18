@@ -1,0 +1,27 @@
+<form #bookform="ngForm" (ngSubmit)="addbook(bookform)">
+    <br>
+    <h1>Add Book</h1>
+    <div class="bookform">
+        <label >Book ID</label>
+        <input type="number" name="Id" id="Id" [(ngModel)]="book.Id" required/>
+    </div>
+    <div class="bookform">
+        <label >Book Name</label>
+        <input type="text" name="Name" id="Name" [(ngModel)]="book.Name" required/>
+    </div>
+    <div class="bookform">
+        <label for="Author">Author Name</label>
+        <input type="text" name="Author" id="Author" [(ngModel)]="book.Author" required/>
+    </div>
+    <div class="bookform">
+        <label for="Edition">Edition</label>
+        <input type="number" name="Edition" id="Edition" [(ngModel)]="book.Edition" required/>
+    </div>
+    <div class="bookform">
+        <label for="Publisher">Publisher</label>
+        <input type="text" name="Publisher" id="Publisher" [(ngModel)]="book.Publisher" required/>
+    </div>
+    <div class="bookform">
+        <button type="submit">Submit</button>
+    </div>
+</form>

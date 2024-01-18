@@ -1,0 +1,46 @@
+<div *ngIf="show">
+    <h1>Manage Books</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let book of bookService.getBooks()">
+            <td>{{book.Id}}</td>
+            <td>{{book.Name | titlecase}}</td>
+            <td><a (click)="editbook(book.Id)">Edit Details</a></td>
+        </tr> 
+        </tbody>
+    </table>
+</div>
+<div *ngIf="!show">
+    <form class="view-book-form" #editform="ngForm" (ngSubmit)="update(editform)">
+        <br>
+        <h1>Edit Book</h1>
+        <div class="bookform">
+            <label >Book ID</label>
+            <input type="number" name="Id" id="Id" [(ngModel)]="book.Id" required/>
+        </div>
+        <div class="bookform">
+            <label >Book Name</label>
+            <input type="text" name="Name" id="Name" [(ngModel)]="book.Name" required/>
+        </div>
+        <div class="bookform">
+            <label for="Author">Author Name</label>
+            <input type="text" name="Author" id="Author" [(ngModel)]="book.Author" required/>
+        </div>
+        <div class="bookform">
+            <label for="Edition">Edition</label>
+            <input type="number" name="Edition" id="Edition" [(ngModel)]="book.Edition" required/>
+        </div>
+        <div class="bookform">
+            <label for="Publisher">Publisher</label>
+            <input type="text" name="Publisher" id="Publisher" [(ngModel)]="book.Publisher" required/>
+        </div>
+        <div class="bookform">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>
